@@ -1,0 +1,95 @@
+body {
+    background-color: #fff
+}
+
+::-webkit-scrollbar {
+    width: 15px
+}
+
+::-webkit-scrollbar-track {
+    background: #eee
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff
+}
+
+.muted-text {
+    color: #aeb6bd;
+}
+
+.main {
+    margin-top: -60px;
+    width: 800px;
+    height: 500px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.scroll {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+.img1 {
+    border-radius: 50%;
+    background-color: #66BB6A
+}
+
+.name {
+    font-size: 11px
+}
+
+.msg {
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 400
+}
+
+.between {
+    font-size: 12px;
+    font-weight: 500;
+    color: #a09e9e
+}
+
+.form-control {
+    font-size: 14px;
+    font-weight: 400;
+    width: 230px;
+    height: 30px;
+    border: none
+}
+
+.form-control:focus {
+    box-shadow: none !important
+}
+
+.icon1 {
+    color: #7C4DFF !important;
+    font-size: 18px !important;
+    cursor: pointer;
+}
+
+.icondiv {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+    position: relative;
+    bottom: 1px
+}   

@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Stylesheet
+import './Supports/Stylesheet/Utils.css'
+
+import Chat from './Page/Chat';
+import Login from './Page/Login';
+
+import Socket from 'socket.io-client'
+const io = Socket('cozychat.herokuapp.com')
+
+class App extends React.Component{
+  state = {
+    name: null,
+    room: null
+  }
+
+  onChangeState = (name, room) => {
+    var localName = localStorage.getItem('name')
+    this.setState({name : localName, room : room})
+  }
+
+  render(){
+    if(this.state.name === null){
+      return(
+        <Login io={io} onSubmitButton={this.onChangeState} />
+      )
+    }
+
+    return(
+      <Chat io={io} username={this.state.name} room={this.state.room} />
+    )
+  }
 }
 
 export default App;
