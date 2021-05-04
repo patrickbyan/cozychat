@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 class Chat extends React.Component{
     state = { 
@@ -133,103 +133,68 @@ class Chat extends React.Component{
 
     render(){
         return(
-            <div className="container d-flex justify-content-center align-items-center vh-100">
-                <div className="bg-dark h-sm-50 h-md-50 h-75 mt-n5 rounded">
-                    <div className="scroll rounded-top">
-                        <div className="row bg-dark text-light sticky-top shadow rounded-top align-items-center p-0 m-0">
-                            <div className="mx-xl-4 mx-2 mt-2">
-                                <FontAwesomeIcon icon={ faChevronLeft } className="h4"/>
-                            </div>
-                            <div className="col-xl-1 col-2 p-1">
-                                <img src="https://yt3.ggpht.com/ytc/AAUvwngYUMi690QgWod4PscWXl1WF4GsyiCtsbpSgZe6bw=s900-c-k-c0x00ffffff-no-rj" className="rounded-circle my-1" style={{width: '100%'}} alt="..." />
-                            </div>
-                            <div className="col-xl-10 col-9">
-                                <div class="text-light mt-2 text-capitalize h4" style={{fontWeight: '500', letterSpacing: '0.5px'}}>
-                                    {this.props.room}
+            <div className="bg-dark">
+                <div className="container d-flex justify-content-center align-items-center vh-100">
+                    <div className="bg-dark h-sm-50 h-md-50 h-75 mt-n5 rounded shadow">
+                        <div className="scroll rounded-top">
+                            <div className="row bg-dark text-light sticky-top shadow rounded-top align-items-center p-0 m-0">
+                                <div className="mx-xl-4 mx-2 mt-2">
+                                    <FontAwesomeIcon icon={ faChevronLeft } className="h4"/>
                                 </div>
-                                <div className="mb-xl-2 mt-xl-n1">
-                                    <small className="font-weight-normal muted-text h6">
-                                        You
-                                        {
-                                            this.state.userOnline? 
-                                                this.state.userOnline.map((value, index) => {
-                                                    if(index === this.state.userOnline.length - 1){
-                                                        return(
-                                                            <span>
-                                                                ,&nbsp;{value.name}
-                                                            </span>
-                                                        )
-                                                    }else{
-                                                        return(
-                                                            <span>
-                                                                ,&nbsp;{value.name}
-                                                            </span>
-                                                        )
-                                                    }
-                                                })
-                                            :
-                                                null
-                                        }
-                                    </small>
+                                <div className="col-xl-1 col-2 p-1">
+                                    <img src="https://yt3.ggpht.com/ytc/AAUvwngYUMi690QgWod4PscWXl1WF4GsyiCtsbpSgZe6bw=s900-c-k-c0x00ffffff-no-rj" className="rounded-circle my-1" style={{width: '100%'}} alt="..." />
                                 </div>
-                            </div>
-                        </div>
-                        <div className="mt-2 ml-2">
-                            {
-                                this.state.history?
-                                    this.state.history.map((value, index) => {
-                                        if(index !== this.state.history.length - 1){
-                                            if(this.props.username === value.name){
-                                                return(
-                                                    <div className="d-flex align-items-center">
-                                                        <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
-                                                            {value.name[0]}
-                                                        </p>
-                                                        <div className="pr-2 pl-1"> <span className="name text-light">{value.name} (Me)</span>
-                                                            <p className="msg bg-secondary text-light">
-                                                                {value.message} <small className="ml-2 muted-text" style={{fontSize: '10px'}}>19:02</small>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            }else{
-                                                return(
-                                                    <div className="d-flex align-items-center text-right justify-content-end">
-                                                        <div className="pr-2 pl-1"> <span className="name text-light">{value.name}</span>
-                                                            <p className="msg bg-info text-light">
-                                                                {value.message}
-                                                            </p>
-                                                        </div>
-                                                        <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
-                                                            {value.name[0]}
-                                                        </p>
-                                                    </div>
-                                                )
+                                <div className="col-xl-10 col-9">
+                                    <div class="text-light mt-2 text-capitalize h4" style={{fontWeight: '500', letterSpacing: '0.5px'}}>
+                                        {this.props.room}
+                                    </div>
+                                    <div className="mb-xl-2 mt-xl-n1">
+                                        <small className="font-weight-normal muted-text h6">
+                                            You
+                                            {
+                                                this.state.userOnline? 
+                                                    this.state.userOnline.map((value, index) => {
+                                                        if(index === this.state.userOnline.length - 1){
+                                                            return(
+                                                                <span>
+                                                                    ,&nbsp;{value.name}
+                                                                </span>
+                                                            )
+                                                        }else{
+                                                            return(
+                                                                <span>
+                                                                    ,&nbsp;{value.name}
+                                                                </span>
+                                                            )
+                                                        }
+                                                    })
+                                                :
+                                                    null
                                             }
-                                        }else{
-                                            if(this.props.username === value.name){
-                                                return(
-                                                    <>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mt-2 ml-2">
+                                {
+                                    this.state.history?
+                                        this.state.history.map((value, index) => {
+                                            if(index !== this.state.history.length - 1){
+                                                if(this.props.username === value.name){
+                                                    return(
                                                         <div className="d-flex align-items-center">
                                                             <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
                                                                 {value.name[0]}
                                                             </p>
                                                             <div className="pr-2 pl-1"> <span className="name text-light">{value.name} (Me)</span>
                                                                 <p className="msg bg-secondary text-light">
-                                                                    {value.message}
+                                                                    {value.message} <small className="ml-2 muted-text" style={{fontSize: '10px'}}>19:02</small>
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                        <div className="text-center mt-3">
-                                                            <span className="between text-light">
-                                                                Earlier chat
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                )
-                                            }else{
-                                                return(
-                                                    <>
+                                                    )
+                                                }else{
+                                                    return(
                                                         <div className="d-flex align-items-center text-right justify-content-end">
                                                             <div className="pr-2 pl-1"> <span className="name text-light">{value.name}</span>
                                                                 <p className="msg bg-info text-light">
@@ -240,101 +205,139 @@ class Chat extends React.Component{
                                                                 {value.name[0]}
                                                             </p>
                                                         </div>
-                                                        <div className="text-center mt-3">
-                                                            <span className="between text-light">
-                                                                Earlier chat
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                    
-                                                )
+                                                    )
+                                                }
+                                            }else{
+                                                if(this.props.username === value.name){
+                                                    return(
+                                                        <>
+                                                            <div className="d-flex align-items-center">
+                                                                <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
+                                                                    {value.name[0]}
+                                                                </p>
+                                                                <div className="pr-2 pl-1"> <span className="name text-light">{value.name} (Me)</span>
+                                                                    <p className="msg bg-secondary text-light">
+                                                                        {value.message}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="text-center mt-3">
+                                                                <span className="between text-light">
+                                                                    Earlier chat
+                                                                </span>
+                                                            </div>
+                                                        </>
+                                                    )
+                                                }else{
+                                                    return(
+                                                        <>
+                                                            <div className="d-flex align-items-center text-right justify-content-end">
+                                                                <div className="pr-2 pl-1"> <span className="name text-light">{value.name}</span>
+                                                                    <p className="msg bg-info text-light">
+                                                                        {value.message}
+                                                                    </p>
+                                                                </div>
+                                                                <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
+                                                                    {value.name[0]}
+                                                                </p>
+                                                            </div>
+                                                            <div className="text-center mt-3">
+                                                                <span className="between text-light">
+                                                                    Earlier chat
+                                                                </span>
+                                                            </div>
+                                                        </>
+                                                        
+                                                    )
+                                                }
                                             }
-                                        }
-                                    })
-                                :
-                                    null
-                            }
-                            
-                            {
-                                this.state.message?
-                                    this.state.message.map((value, index) => {
-                                        if(value.from === 'Bot'){
-                                            return(
-                                                <div key={index} className="text-center mt-3">
-                                                    <span className="between text-light">
-                                                        {value.message}
-                                                    </span>
-                                                </div>
-                                            )
-                                        }else{
-                                            if(this.props.username === value.from){
+                                        })
+                                    :
+                                        null
+                                }
+                                
+                                {
+                                    this.state.message?
+                                        this.state.message.map((value, index) => {
+                                            if(value.from === 'Bot'){
                                                 return(
-                                                    <div className="d-flex align-items-center">
-                                                        <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
-                                                            {value.from[0]}
-                                                        </p>
-                                                        <div className="pr-2 pl-1"> <span className="name text-light">{value.from} (Me)</span>
-                                                            <p className="msg bg-secondary text-light">
-                                                                {value.message}
-                                                            </p>
-                                                        </div>
+                                                    <div key={index} className="text-center mt-3">
+                                                        <span className="between text-light">
+                                                            {value.message}
+                                                        </span>
                                                     </div>
                                                 )
                                             }else{
-                                                return(
-                                                    <div className="d-flex align-items-center text-right justify-content-end">
-                                                        <div className="pr-2 pl-1"> <span className="name text-light">{value.from} (Me)</span>
-                                                            <p className="msg bg-info text-light">
-                                                                {value.message}
+                                                if(this.props.username === value.from){
+                                                    return(
+                                                        <div className="d-flex align-items-center">
+                                                            <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
+                                                                {value.from[0]}
+                                                            </p>
+                                                            <div className="pr-2 pl-1"> <span className="name text-light">{value.from} (Me)</span>
+                                                                <p className="msg bg-secondary text-light">
+                                                                    {value.message}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                }else{
+                                                    return(
+                                                        <div className="d-flex align-items-center text-right justify-content-end">
+                                                            <div className="pr-2 pl-1"> <span className="name text-light">{value.from} (Me)</span>
+                                                                <p className="msg bg-info text-light">
+                                                                    {value.message}
+                                                                </p>
+                                                            </div>
+                                                            <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
+                                                                {value.from[0]}
                                                             </p>
                                                         </div>
-                                                        <p className="rounded-circle bg-light text-center mt-3 mr-2 font-weight-bold text-capitalize" style={{fontSize: '16px', width: '40px', height: '40px', paddingTop: '6px'}} alt="img">
-                                                            {value.from[0]}
-                                                        </p>
-                                                    </div>
-                                                )
+                                                    )
+                                                }
                                             }
-                                        }
+                                        })
+                                    :
+                                        null
+                                }
+                                {
+                                    this.state.usersTyping?
+                                    this.state.usersTyping.map((value, index) => {
+                                        return(
+                                            <div className="d-flex align-items-center text-right justify-content-end">
+                                                <div className="pr-2"><span className="name text-light">{value.name}</span>
+                                                    <p className="msg bg-secondary text-light">
+                                                        typing
+                                                        <span class="spinner-grow spinner-grow-sm ml-1"></span>
+                                                        <span class="spinner-grow spinner-grow-sm mx-1"></span>
+                                                        <span class="spinner-grow spinner-grow-sm"></span>
+                                                    </p>
+                                                </div>
+                                            </div> 
+                                        )
                                     })
-                                :
+                                    :
                                     null
-                            }
-                            {
-                                this.state.usersTyping?
-                                 this.state.usersTyping.map((value, index) => {
-                                     return(
-                                        <div className="d-flex align-items-center text-right justify-content-end">
-                                            <div className="pr-2"><span className="name text-light">{value.name}</span>
-                                                <p className="msg bg-secondary text-light">
-                                                    typing
-                                                    <span class="spinner-grow spinner-grow-sm ml-1"></span>
-                                                    <span class="spinner-grow spinner-grow-sm mx-1"></span>
-                                                    <span class="spinner-grow spinner-grow-sm"></span>
-                                                </p>
-                                            </div>
-                                        </div> 
-                                     )
-                                 })
-                                :
-                                 null
-                            }
-                            
+                                }
+                                
+                            </div>
+                            <div className="navbar">
+
+                            </div>
                         </div>
-                        <div className="navbar">
+                        <div className="w-100">
 
                         </div>
+                        {/* ######## CHAT BOX ########*/}
+                        <form className="navbar bg-white navbar-expand-sm d-flex justify-content-between rounded-bottom shadow mt-n1" onSubmit={this.onChat}> 
+                            <input type="text number" ref={(e) => this.text = e} name="text" className="form-control w-md-80 w-100" placeholder="Type a message..." onChange={this.onTyping} />
+                            <input type="submit" value="Send" className="btn btn-info" onClick={this.onChat} />
+                            {/* <div className="icondiv d-flex justify-content-end align-content-center text-center ml-2"> 
+                                <i><FontAwesomeIcon icon={faArrowCircleRight} role="button" type="submit" className="text-primary h5" onClick={this.onChat}/></i>
+                            </div> */}
+                        </form>
+                        {/* ######## CHAT BOX ########*/}
                     </div>
-                    <div className="w-100">
-
-                    </div>
-                    {/* ######## CHAT BOX ########*/}
-                    <form className="navbar bg-white navbar-expand-sm d-flex justify-content-between rounded-bottom shadow mt-n1" onSubmit={this.onChat}> 
-                        <input type="text number" ref={(e) => this.text = e} name="text" className="form-control w-md-90 w-100" placeholder="Type a message..." onChange={this.onTyping} />
-                        <div className="icondiv d-flex justify-content-end align-content-center text-center ml-2"> 
-                            <i><FontAwesomeIcon icon={faArrowCircleRight} role="button" type="submit" className="text-primary h5" onClick={this.onChat}/></i>
-                        </div>
-                    </form>
-                    {/* ######## CHAT BOX ########*/}
                 </div>
             </div>
         )
