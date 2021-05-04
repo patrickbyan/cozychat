@@ -18,25 +18,9 @@ body {
     background: #555
 }
 
-.wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff
-}
 
 .muted-text {
     color: #aeb6bd;
-}
-
-.main {
-    margin-top: -60px;
-    width: 800px;
-    height: 500px;
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
 .scroll {
@@ -93,3 +77,43 @@ body {
     position: relative;
     bottom: 1px
 }   
+
+@media only screen and (max-width: 576px) {
+    .h-sm-50{
+        height: 50% !important;
+    }
+
+    .w-sm-90{
+        width: 90% !important;
+    }
+
+    .m-sm-10{
+        margin-top: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .h-md-50{
+        height: 50% !important;
+    }
+
+    .w-md-90{
+        width: 90% !important;
+    }
+
+    .h-md-75{
+        height: 75% !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .h-lg-75{
+        height: 75% !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .h-xl-75{
+        height: 75% !important;
+    }
+}

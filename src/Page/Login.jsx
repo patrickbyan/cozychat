@@ -22,10 +22,10 @@ class Login extends React.Component{
 
     render(){
         return(
-            <div className="container-fluid">
-                <div className="row justify-content-center">
+            <div className="container-md">
+                <div className="row justify-content-center align-items-center" style={{height: '100vh'}}>
                     <div className="col-12 col-md-6 col-sm-12 col-xs-12">
-                    <div className="card bg-dark p-4 p-md-4 text-white border-0" style={{marginTop: '150px', width: '60vh', marginLeft: '140px'}}>
+                    <div className="card bg-dark p-4 p-md-4 text-white border-0">
                         <h6>Hi! Welcome to cozylife</h6>
                         <p className="font-weight-normal">Please insert your username and your desired chat room</p>
                         <form className="form-row justify-content-center my-3 mt-n1" onSubmit={this.onSubmitButton}>

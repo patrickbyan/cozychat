@@ -17,8 +17,7 @@ class App extends React.Component{
   }
 
   onChangeState = (name, room) => {
-    var localName = localStorage.getItem('name')
-    this.setState({name : localName, room : room})
+    this.setState({name : name, room : room})
   }
 
   render(){

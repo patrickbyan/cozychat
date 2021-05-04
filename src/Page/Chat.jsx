@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 class Chat extends React.Component{
     state = { 
@@ -133,19 +133,22 @@ class Chat extends React.Component{
 
     render(){
         return(
-            <div className="wrapper">
-                <div className="main bg-dark">
-                    <div className="px-2 scroll rounded-top">
-                        <div className="container row bg-dark text-light sticky-top shadow rounded-top align-items-center" style={{width: '109.7vh'}}>
-                            <div className="col-2 mr-n2">
-                                <img src="https://yt3.ggpht.com/ytc/AAUvwngYUMi690QgWod4PscWXl1WF4GsyiCtsbpSgZe6bw=s900-c-k-c0x00ffffff-no-rj" class="rounded-circle w-50" alt="..." />
+            <div className="container d-flex justify-content-center align-items-center vh-100">
+                <div className="bg-dark h-sm-50 h-md-50 h-75 mt-n5 rounded">
+                    <div className="scroll rounded-top">
+                        <div className="row bg-dark text-light sticky-top shadow rounded-top align-items-center p-0 m-0">
+                            <div className="mx-xl-4 mx-2 mt-2">
+                                <FontAwesomeIcon icon={ faChevronLeft } className="h4"/>
                             </div>
-                            <div className="col-10 ml-n5">
-                                <div class="text-light mt-2 text-capitalize" style={{fontWeight: '500', letterSpacing: '0.5px'}}>
+                            <div className="col-xl-1 col-2 p-1">
+                                <img src="https://yt3.ggpht.com/ytc/AAUvwngYUMi690QgWod4PscWXl1WF4GsyiCtsbpSgZe6bw=s900-c-k-c0x00ffffff-no-rj" className="rounded-circle my-1" style={{width: '100%'}} alt="..." />
+                            </div>
+                            <div className="col-xl-10 col-9">
+                                <div class="text-light mt-2 text-capitalize h4" style={{fontWeight: '500', letterSpacing: '0.5px'}}>
                                     {this.props.room}
                                 </div>
-                                <div className="mb-2 mt-n1">
-                                    <small className="font-weight-normal muted-text">
+                                <div className="mb-xl-2 mt-xl-n1">
+                                    <small className="font-weight-normal muted-text h6">
                                         You
                                         {
                                             this.state.userOnline? 
@@ -171,7 +174,7 @@ class Chat extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-2">
+                        <div className="mt-2 ml-2">
                             {
                                 this.state.history?
                                     this.state.history.map((value, index) => {
@@ -321,10 +324,12 @@ class Chat extends React.Component{
 
                         </div>
                     </div>
-                    
+                    <div className="w-100">
+
+                    </div>
                     {/* ######## CHAT BOX ########*/}
                     <form className="navbar bg-white navbar-expand-sm d-flex justify-content-between rounded-bottom shadow mt-n1" onSubmit={this.onChat}> 
-                        <input type="text number" ref={(e) => this.text = e} name="text" className="form-control w-100" placeholder="Type a message..." onChange={this.onTyping} />
+                        <input type="text number" ref={(e) => this.text = e} name="text" className="form-control w-md-90 w-100" placeholder="Type a message..." onChange={this.onTyping} />
                         <div className="icondiv d-flex justify-content-end align-content-center text-center ml-2"> 
                             <i><FontAwesomeIcon icon={faArrowCircleRight} role="button" type="submit" className="text-primary h5" onClick={this.onChat}/></i>
                         </div>
