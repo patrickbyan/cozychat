@@ -17,7 +17,7 @@ class App extends React.Component{
   }
 
   onChangeState = (name, room) => {
-    this.setState({name : name, room : room.toUpperCase()})
+    this.setState({name : name, room : room})
   }
 
   render(){

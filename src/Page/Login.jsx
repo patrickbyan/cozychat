@@ -6,7 +6,7 @@ class Login extends React.Component{
         e.preventDefault();
 
         let name = this.name.value
-        let room = this.room.value
+        let room = this.room.value.toLowerCase()
 
         this.props.io.emit('user-join', {name, room})
         this.props.io.on('total-user', (data) => {
