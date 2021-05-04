@@ -139,7 +139,7 @@ class Chat extends React.Component{
                         <div className="scroll rounded-top">
                             <div className="row bg-dark text-light sticky-top shadow rounded-top align-items-center p-0 m-0">
                                 <div className="mx-xl-4 mx-2 mt-2">
-                                    <FontAwesomeIcon icon={ faChevronLeft } className="h4"/>
+                                    <FontAwesomeIcon icon={ faChevronLeft } className="h4" role="button" />
                                 </div>
                                 <div className="col-xl-1 col-2 p-1">
                                     <img src="https://yt3.ggpht.com/ytc/AAUvwngYUMi690QgWod4PscWXl1WF4GsyiCtsbpSgZe6bw=s900-c-k-c0x00ffffff-no-rj" className="rounded-circle my-1" style={{width: '100%'}} alt="..." />
