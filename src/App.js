@@ -8,8 +8,12 @@ import Chat from './Page/Chat';
 import Login from './Page/Login';
 
 import Socket from 'socket.io-client'
-// const io = Socket('cozychat.herokuapp.com')
-const io = Socket('http://localhost:5000')
+
+// API HEROKU
+const io = Socket('cozychat.herokuapp.com')
+
+// API localhost
+// const io = Socket('http://localhost:5000')
 
 class App extends React.Component{
   state = {
