@@ -10,7 +10,8 @@ class Chat extends React.Component{
         message: [],
         typing: false,
         history: null,
-        usersTyping: []
+        usersTyping: [],
+        error: null
     }
 
 
@@ -23,6 +24,11 @@ class Chat extends React.Component{
             }
             data.splice(index, 1)
             this.setState({userOnline: data})
+        })
+
+        this.props.io.on('error-message', (data) => {
+            console.log(data)
+            this.setState({error: data})
         })
 
         this.props.io.on('send-message-from-server', (data) => {
@@ -54,7 +60,6 @@ class Chat extends React.Component{
             //         </div>    
             //     })
             // }
-            console.log(data.message.length)
             if(data.message.length > 0){
                 let index = null
 
@@ -95,7 +100,7 @@ class Chat extends React.Component{
         })
 
         this.props.io.on('get-chat-history', (data) => {
-            this.setState({history: data})
+            this.setState({history: data.result})
         })
     }
 
@@ -106,6 +111,8 @@ class Chat extends React.Component{
             name: this.props.username,
             message: this.text.value
         }
+
+        console.log(data)
         
         if(data.message.length !== 0){
             this.props.io.emit('send-chat', data)
@@ -176,6 +183,16 @@ class Chat extends React.Component{
                                 </div>
                             </div>
                             <div className="mt-2 ml-2">
+                                {
+                                    this.state.error?
+                                        <div className="text-center mt-3">
+                                            <span className="between text-light">
+                                                {this.state.error.message}
+                                            </span>
+                                        </div>
+                                    :
+                                        null
+                                }
                                 {
                                     this.state.history?
                                         this.state.history.map((value, index) => {
@@ -331,10 +348,7 @@ class Chat extends React.Component{
                         {/* ######## CHAT BOX ########*/}
                         <form className="navbar bg-white navbar-expand-sm d-flex justify-content-between rounded-bottom shadow mt-n1" onSubmit={this.onChat}> 
                             <input type="text number" ref={(e) => this.text = e} name="text" className="form-control w-md-80 w-100" placeholder="Type a message..." onChange={this.onTyping} />
-                            <input type="submit" value="Send" className="btn btn-info" onClick={this.onChat} />
-                            {/* <div className="icondiv d-flex justify-content-end align-content-center text-center ml-2"> 
-                                <i><FontAwesomeIcon icon={faArrowCircleRight} role="button" type="submit" className="text-primary h5" onClick={this.onChat}/></i>
-                            </div> */}
+                            <input type="submit" value="Send" className="btn btn-info" onClick={this.onChat} disabled={this.state.error? this.state.error.error : null} />
                         </form>
                         {/* ######## CHAT BOX ########*/}
                     </div>
